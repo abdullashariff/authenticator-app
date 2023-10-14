@@ -1,0 +1,14 @@
+/* TokenScreen.css */
+button {
+    margin: 10px;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  input {
+    padding: 5px;
+    margin: 10px;
+  }
