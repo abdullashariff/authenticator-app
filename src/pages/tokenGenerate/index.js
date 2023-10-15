@@ -1,12 +1,19 @@
-import react from "react";
+import react, { useEffect } from "react";
 import DigitalKeypad from "../../components/digital-keypad/DigitalKeypad";
 import useFetch from "../../hooks/usefetch";
 import { GENERATE_TOKEN_ENDPOINT } from "../../network/endpoints";
 
 const GenerateToken = (props) => {
   const { response, error, isLoading, execute } = useFetch();
+
+  const { setToken = () => {} } = props;
+
+  useEffect(() => {
+    setToken(response);
+  }, [response]);
+
   const getDigits = (value) => {
-    props?.setAvailableDigit(value)
+    props?.setAvailableDigit(value);
     const config = {
       data: { availableDigits: value },
       endpoint: GENERATE_TOKEN_ENDPOINT,

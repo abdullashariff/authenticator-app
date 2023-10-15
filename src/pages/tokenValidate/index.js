@@ -1,14 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useFetch from "../../hooks/usefetch";
 import { VALIDATE_TOKEN_ENDPOINT } from "../../network/endpoints";
 import "./TokenScreen.css";
 
 const ValidateToken = (props) => {
-  const [inputToken, setInputToken] = useState("");
+  const [inputToken, setToken] = useState("");
   const { response, error, isLoading, execute } = useFetch();
-  const { availableDigit = "" } = props;
+  const { availableDigit = "", token = "" } = props;
 
-  console.log(props);
+
+  useEffect(()=>{
+    setToken(token)
+  },[token])
+
+
 
   const validateInputToken = () => {
     const config = {
@@ -31,7 +36,7 @@ const ValidateToken = (props) => {
         type="text"
         placeholder="Enter Token to Validate"
         value={inputToken}
-        onChange={(e) => setInputToken(e.target.value)}
+        onChange={(e) => setToken(e.target.value)}
       />
       <button onClick={validateInputToken}>Validate Token</button>
       <div>

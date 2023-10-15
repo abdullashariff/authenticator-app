@@ -16,24 +16,7 @@ const useFetch = () => {
       let response;
       const url = `${BASE_URL}${endpoint}`;
 
-      console.log("url", url);
-      console.log("url: request", config);
-
       response = await axios({...config, url});
-
-      console.log("url: response", response);
-
-      //   if (method === "GET") {
-      //     response = await axios.get(url);
-      //   } else if (method === "POST") {
-      //     response = await axios(config);
-      //   } else if (method === "PUT") {
-      //     response = await axios.put(url, data);
-      //   } else if (method === "DELETE") {
-      //     response = await axios.delete(url);
-      //   } else {
-      //     console.log("invalid method type");
-      //   }
 
       setResponse(response?.data);
       setError(null);
