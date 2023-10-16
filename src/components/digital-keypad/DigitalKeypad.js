@@ -26,6 +26,9 @@ const DigitalKeypad = (props) => {
   };
 
   const generateToken = () => {
+    if(!input) {
+      return setError(`invalid input`);
+    }
     console.log("input", input);
     sendDigits(input)
   };
